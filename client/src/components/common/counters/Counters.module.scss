@@ -1,0 +1,26 @@
+@import '../../../scss/_variables';
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.count {
+  font-size: 23px;
+  line-height: 130.19%;
+  text-transform: capitalize;
+  > span {
+    display: block;
+  }
+
+  > .name {
+    color: $black-02;
+    margin-bottom: 10px;
+  }
+
+  > .value {
+    color: #fff;
+    font-weight: 700;
+  }
+}

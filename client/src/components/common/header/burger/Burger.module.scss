@@ -1,0 +1,42 @@
+@import "../../../../scss/_variables";
+@import "../../../../scss/animations.scss";
+
+.wrapper {
+  position: relative;
+
+  button {
+    background-color: transparent;
+  }
+
+  > .menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: #fff;
+    padding: 14px;
+    width: 116px;
+    border-radius: 10px 0px 10px 10px; 
+    transform: scale(0);
+    
+    &.show {
+      animation: show 0.3s ease-in-out forwards;
+      visibility: visible;
+    }
+
+    > ul {
+      > .link {
+        transition: all 0.2s ease;
+
+        & > a {
+          font-size: 14px;
+          line-height: 16px;
+          color: #000000;
+
+          &:hover, :active {
+            color: $accent;
+          }
+        }
+      }
+    }
+  }
+}

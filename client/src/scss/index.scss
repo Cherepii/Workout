@@ -51,6 +51,14 @@ body {
 	opacity: 1;
 }
 
+a {
+	text-decoration: none;
+}
+
+ul, li {
+	list-style: none;
+}
+
 img {
 	max-width: 100%;
 }
@@ -59,6 +67,24 @@ button {
 	border: none;
 	outline: none;
 	cursor: pointer;
+}
+
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: all 0.8s;
+	transform: rotate(360deg);
+}
+.item-exit {
+  opacity: 0;
+	
+}
+.item-exit-active {
+  opacity: 1;
+  transition: all 0.8s;
+	transform: rotate(-360deg);
 }
 
 .img-responsive {
