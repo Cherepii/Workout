@@ -1,0 +1,20 @@
+@import "../../../scss/variables";
+
+.wrapper {
+  max-width: 340px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 50px 0;
+  text-align: center;
+
+  .exerciseLabel {
+    display: block;
+    text-align: right;
+    color: $purple;
+    font-size: 15px;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@import "../../../scss/_variables.scss";
+
+.customInput {
+  padding: 14px;
+  margin-bottom: 12px;
+  background: $purple;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 19px;
+  &:focus{
+    border-color: rgba($accent, 0.3);
+  }
+  &::placeholder {
+    color: #946E86;
+  }
+}

@@ -23,7 +23,7 @@ const Burger = () => {
         <ul>
           {menuLinks.map(i => (
             <li key={i.title} className={styles.link}>
-              <Link to={i.link}>{i.title}</Link>
+              <Link onClick={() => setMenu(false)} to={i.link}>{i.title}</Link>
             </li>
           ))}
           <li className={styles.link}>
