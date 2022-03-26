@@ -1,15 +1,24 @@
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom"
-import Home from "./components/pages/Home/Home";
-import NewWorkout from "./components/pages/newWorkout/NewWorkout";
+
+import { useAuth } from "./hooks/useAuth";
+import NotFound from "./components/pages/404"
+import { routes } from "./routes";
 
 
 const App = () => {
+  const {isAuth} = useAuth()
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/new-workout" element={<NewWorkout />}/>
-    </Routes>
+        {routes.map(route => {  
+          if(route.auth && !isAuth){
+            return false
+          }
+
+          return <Route key={route.path} path={route.path} element={<route.element/>}/>
+        })}
+        <Route path="*" element={<NotFound />}/>
+      </Routes>
     </Router>
   );
 }

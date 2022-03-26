@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+import AppProvider from './provider/AppProvider';
+
 import "./scss/index.scss"
 
+const queryClient = new QueryClient()
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <QueryClientProvider client={queryClient}>
+      <AppProvider />
+    </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

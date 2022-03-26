@@ -4,17 +4,22 @@ import Burger from './burger/Burger'
 
 import userIcon from "../../../images/icons/user.svg"
 import arrowIcon from "../../../images/icons/arrow.svg"
+import dumbbell from "../../../images/icons/dumbbell.svg"
+
 import styles from "./Header.module.scss"
+import { useAuth } from '../../../hooks/useAuth'
 
 const Header = () => {
+  const {isAuth} = useAuth();
+  
   const location = useLocation();
   const navigate = useNavigate();
 
   return (
     <header className={styles.header}>
       {location.pathname === '/' ?
-        <button type='button'>
-          <img src={userIcon} alt='user'/>
+        <button type='button' onClick={() => navigate(isAuth ? '/profile' : '/auth')}>
+          <img src={isAuth ? dumbbell : userIcon} alt='user'/>
         </button>
 
       : <button type='button' onClick={() => navigate(-1)}>

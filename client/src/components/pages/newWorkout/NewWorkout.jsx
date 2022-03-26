@@ -5,7 +5,7 @@ import Layout from '../../common/layout/Layout'
 import Button from '../../ui/button/Button'
 import Field from '../../ui/field/Field'
 
-import authBg from "../../../images/bg-auth.png"
+import createBg from "../../../images/bg-create.png"
 import styles from "./NewWorkout.module.scss"
 import { Link } from 'react-router-dom'
 
@@ -13,21 +13,26 @@ const NewWorkout = () => {
   const [name, setName] = useState('')
   const [exercises, setExercises] = useState([])
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     console.log('submit')
   }
 
   return (
     <>
-      <Layout height='356px' bgImage={authBg} heading='Create new workout'/>
+      <Layout height='356px' bgImage={createBg} heading='Create new workout'/>
       <div className={styles.wrapper}>
-        <form action={handleSubmit}>
+        <form>
           <Field 
             onChange={e => setName(e.target.value)}
             value={name}
             placeholder='Enter name'
           />
-          <Link to={'/new-exercise'} className={styles.exerciseLabel}>Add new exercise</Link>
+          
+          <Link to={'/new-exercise'} className={styles.exerciseLabel}>
+            Add new exercise
+          </Link>
+
           <Select 
             placeholder='Exercises'
             classNamePrefix='custom-select'
@@ -41,7 +46,7 @@ const NewWorkout = () => {
               {label: 'Pull-ups', value: 'fdsfdfdfkkglds'} 
             ]}
           />
-          <Button text='Create' onButtonClick={() => {}}/>
+          <Button text='Create' onButtonClick={(e) => handleSubmit(e)}/>
         </form>
       </div>
     </>
