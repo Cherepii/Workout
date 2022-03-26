@@ -7,12 +7,12 @@ import Exercise from "../../models/exerciseModel.js"
   @access Private
 */
 export const createNewExercise = asyncHandler(async (req, res) => {
-  const {name, times, imageIdx} = req.body
+  const {name, times, imageName} = req.body
 
   const exercise = await Exercise.create({
     name,
     times, 
-    imageIdx: imageIdx
+    imageName
   })
 
   res.json(exercise)
@@ -24,7 +24,7 @@ export const createNewExercise = asyncHandler(async (req, res) => {
   @access Private
 */
 export const updateExercise = asyncHandler(async (req, res) => {
-  const { exerciseId, name, imageIdx, times } = req.body
+  const { exerciseId, name, imageName, times } = req.body
 
   const currentExercise = await Exercise.findById(exerciseId)
 
@@ -33,13 +33,13 @@ export const updateExercise = asyncHandler(async (req, res) => {
     res.json('Данное упражнение не найдено!')
   }
 
-  if(!exerciseId || !name || !imageIdx || !times){
+  if(!exerciseId || !name || !imageName || !times){
     res.status(404)
     res.json('Заполните все поля!')
   }
 
   currentExercise.name = name,
-  currentExercise.imageIdx = imageIdx
+  currentExercise.imageName = imageName
   currentExercise.times = times
 
   const updatedExercise = await currentExercise.save()

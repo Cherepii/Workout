@@ -4,7 +4,7 @@ import cl from "classnames"
 import Header from '../header/Header'
 import styles from "./Layout.module.scss"
 
-const Layout = ({children, bgImage, heading = ''}) => {
+const Layout = ({userEmail = '', children, bgImage, heading = ''}) => {
   return (
     <div 
       className={cl(styles.wrapper, {
@@ -12,7 +12,7 @@ const Layout = ({children, bgImage, heading = ''}) => {
 
       style={{backgroundImage: `url(${bgImage})`}}>
 
-      <Header />
+      <Header userEmail={userEmail} />
       {heading && <h1 className={styles.title}>{heading}</h1>}
       {children && <div>{children}</div>}
     </div>

@@ -21,7 +21,7 @@ const NewWorkout = () => {
   return (
     <>
       <Layout height='356px' bgImage={createBg} heading='Create new workout'/>
-      <div className={styles.wrapper}>
+      <div className='wrapper'>
         <form>
           <Field 
             onChange={e => setName(e.target.value)}

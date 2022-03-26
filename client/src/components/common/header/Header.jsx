@@ -9,7 +9,7 @@ import dumbbell from "../../../images/icons/dumbbell.svg"
 import styles from "./Header.module.scss"
 import { useAuth } from '../../../hooks/useAuth'
 
-const Header = () => {
+const Header = ({userEmail}) => {
   const {isAuth} = useAuth();
   
   const location = useLocation();
@@ -18,9 +18,12 @@ const Header = () => {
   return (
     <header className={styles.header}>
       {location.pathname === '/' ?
-        <button type='button' onClick={() => navigate(isAuth ? '/profile' : '/auth')}>
-          <img src={isAuth ? dumbbell : userIcon} alt='user'/>
-        </button>
+        <div className={styles.userInfo}>
+          <button type='button' onClick={() => navigate(isAuth ? '/profile' : '/auth')}>
+            <img src={isAuth ? dumbbell : userIcon} alt='user'/>
+          </button>
+          <div className={styles.user}>{userEmail}</div>
+        </div>
 
       : <button type='button' onClick={() => navigate(-1)}>
           <img src={arrowIcon} alt='user'/>

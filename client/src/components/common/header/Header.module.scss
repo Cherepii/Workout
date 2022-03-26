@@ -4,7 +4,16 @@
   align-items: center;
   min-height: 32px;
 
-  & > button {
+  & > .userInfo {
+    display: flex;
+    align-items: center;
+
+    .user {
+      margin-left: 12px;
+    }
+  }
+
+  & > button, & > div > button {
     background-color: transparent;
   }
 }
