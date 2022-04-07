@@ -23,7 +23,7 @@ const Burger = () => {
     <div className={styles.wrapper} ref={ref}>
       <button type='button' onClick={() => setIsComponentVisible(!isComponentVisible)}>
         <CSSTransition in={isComponentVisible} classNames='item' timeout={800} >
-          <img src={isComponentVisible ? closeIcon : menuIcon} alt='burger-menu'/>
+          <img draggable={false} src={isComponentVisible ? closeIcon : menuIcon} alt='burger-menu'/>
         </CSSTransition>
       </button>
 

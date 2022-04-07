@@ -27,7 +27,7 @@ const $api = async({type = 'GET', body, auth = true, url}) => {
         data = await instance.put(url, body)
         break;
       case 'DELETE':
-        data = await instance.delete(url)
+        data = await instance.delete(url, {data: body})
         break;
     
       default:

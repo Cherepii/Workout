@@ -1,4 +1,5 @@
 import WorkoutLog from "../../models/workoutLogModel.js";
+import ExerciseLog from "../../models/exerciseLogModel.js"
 import Workout from "../../models/workoutsModel.js";
 import asyncHandler from "express-async-handler"
 /* 
@@ -20,7 +21,7 @@ export const createWorkoutLog = asyncHandler(async (req, res) => {
       workout: workoutId
     })
 
-    const logs = workoutLog.exercises.map(e => {
+    const logs = workout.exercises.map(e => {
       let timesArr = []
 
       for (let i = 0; i < e.times; i++) {
@@ -32,7 +33,7 @@ export const createWorkoutLog = asyncHandler(async (req, res) => {
 
       return {
         user,
-        exercises: e._id,
+        exercise: e._id,
         times: timesArr,
         workoutLog: workoutLog._id
       }
@@ -40,11 +41,11 @@ export const createWorkoutLog = asyncHandler(async (req, res) => {
 
     const createExLogs = await ExerciseLog.insertMany(logs)
 
-    exLogsId = createExLogs.map(e => e._id)
+    const exLogsId = createExLogs.map(e => e._id)
 
     const foundWorkoutLog = await WorkoutLog.findById(workoutLog._id)
 
-    foundWorkoutLog.ExerciseLogs = exLogsId
+    foundWorkoutLog.exerciseLogs = exLogsId
 
     const updatedWorkoutLog = await foundWorkoutLog.save()
 
@@ -61,7 +62,7 @@ export const createWorkoutLog = asyncHandler(async (req, res) => {
   @access Private
 */
 export const getWorkoutLog = asyncHandler(async (req, res) => {
-  const workoutLog = await WorkoutLog.findById(req.params.is)
+  const workoutLog = await WorkoutLog.findById(req.params.id)
     .populate('workout')
     .populate({
       path: "exerciseLogs",

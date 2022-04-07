@@ -20,13 +20,13 @@ const Header = ({userEmail}) => {
       {location.pathname === '/' ?
         <div className={styles.userInfo}>
           <button type='button' onClick={() => navigate(isAuth ? '/profile' : '/auth')}>
-            <img src={isAuth ? dumbbell : userIcon} alt='user'/>
+            <img draggable={false} src={isAuth ? dumbbell : userIcon} alt='user'/>
           </button>
           <div className={styles.user}>{userEmail}</div>
         </div>
 
       : <button type='button' onClick={() => navigate(-1)}>
-          <img src={arrowIcon} alt='user'/>
+          <img draggable={false} src={arrowIcon} alt='user'/>
         </button>
       }
 

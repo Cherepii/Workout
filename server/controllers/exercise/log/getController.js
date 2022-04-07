@@ -9,7 +9,7 @@ import { reBuildTimes } from "../../../helpers/exerciseLog.js";
 
 export const getExerciseLog = asyncHandler(async (req, res) => {
   const exerciseLog = await ExerciseLog.findById(req.params.id)
-    .populate('exercise', 'name imageId')
+    .populate('exercise', 'name imageName')
     .lean()
 
   if(!exerciseLog){
@@ -19,19 +19,16 @@ export const getExerciseLog = asyncHandler(async (req, res) => {
 
   const prevExerciseLogs = await ExerciseLog.find({
     user: req.user._id,
-    exercise: exerciseLog._id
+    exercise: exerciseLog.exercise._id
   })
 
   const prevExeLog = prevExerciseLogs[0] 
-  console.log(prevExeLog)
 
-  let newTimes
+  let newTimes = reBuildTimes(exerciseLog)
 
   if(prevExeLog){
     newTimes = reBuildTimes(exerciseLog, prevExeLog)
   }
-
-  newTimes = reBuildTimes(exerciseLog)
 
   res.json({
     ...exerciseLog,

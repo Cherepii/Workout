@@ -1,8 +1,10 @@
+@import "../../../scss/variables";
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 32px;
+  height: 32px;
 
   & > .userInfo {
     display: flex;
@@ -10,6 +12,9 @@
 
     .user {
       margin-left: 12px;
+      color: $white;
+      font-size: 18px;
+      font-weight: 700;
     }
   }
 

@@ -1,0 +1,107 @@
+@import "../../../../scss/_variables.scss";
+
+.heading {
+  display: flex;
+  align-items: center;
+
+  > img {
+    margin-right: 7px;
+  }
+}
+
+.tableWrapper {
+  width: 100%;
+  background: #310C24;
+  border-radius: 10px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  
+  .row {
+    display: flex;
+    align-items: center;
+
+    &.completed {
+      color: $accent;
+      text-decoration: line-through;
+      > div {
+        color: $accent;
+        text-decoration: line-through;
+        cursor: default;
+
+        > i {
+          margin: 0 -1px;
+        }
+
+        > input {
+          color: $accent;
+        }
+      }
+    }
+
+    &:last-child > div{
+      padding-bottom: 40px;
+    }
+    
+    .logItem {
+      padding: 32px 0 8px ;
+      border-bottom: none !important;
+
+      > input {
+        background: transparent;
+        outline: none;
+        border: none;
+        width: 30px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+        color: $white;
+
+        &:first-child{
+          text-align: right;
+        }
+  
+
+        &:focus {
+          outline: none;
+          border: none;
+        }
+      }
+
+      > i {
+        margin: 0 3px;
+      }
+
+      > span, i {
+        cursor: default;
+      }
+      
+      > img {
+        cursor: pointer;
+      }
+    }
+
+    .opacity {
+      opacity: 0.7;
+    }
+
+    > div {
+      border-bottom: 1px solid $purple;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 21px;
+      color: $white;
+      width: 30%;
+      padding: 15px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:nth-child(2){
+        width: 40%;
+        border-right: 1px solid $purple;
+        border-left: 1px solid $purple;
+      }
+      
+    }
+  }
+  
+}

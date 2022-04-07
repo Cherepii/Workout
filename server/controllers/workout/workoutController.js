@@ -9,12 +9,12 @@ import Workout from "../../models/workoutsModel.js"
 export const createNewWork = asyncHandler(async (req, res) => {
   const {name, exercisesId} = req.body
 
-  const workouts = await Workout.create({
+  const workout = await Workout.create({
     name,
     exercises: exercisesId
   })
 
-  res.json(workouts)
+  res.json(workout)
 })
 
 /* 
@@ -33,8 +33,8 @@ export const getWorkout = asyncHandler(async (req, res) => {
 })
 
 /* 
-  @desc get workout
-  @route POST /api/workouts/:id
+  @desc get workouts
+  @route POST /api/workouts
   @access Private
 */
 export const getWorkouts = asyncHandler(async (req, res) => {
@@ -78,7 +78,7 @@ export const removeWorkout = asyncHandler(async (req, res) => {
 
   if(!workout){
     res.status(404)
-    res.json('Данная тренировка не найдена!')
+    throw new Error('Данная тренировка не найдена!')
   }
 
   await workout.remove()

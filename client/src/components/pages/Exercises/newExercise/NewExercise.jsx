@@ -1,15 +1,15 @@
 import { useState } from 'react'
-import cl from "classnames"
-
-import Layout from '../../common/layout/Layout'
-import Button from '../../ui/button/Button'
-import Field from '../../ui/field/Field'
-import Alert from '../../ui/alert/Alert'
-
-import createBg from "../../../images/bg-create.png"
-import styles from "./NewExercise.module.scss"
 import { useMutation } from 'react-query'
-import $api from '../../../api/api'
+import cl from "classnames"
+import $api from '../../../../api/api'
+
+import Layout from '../../../common/layout/Layout'
+import Button from '../../../ui/button/Button'
+import Field from '../../../ui/field/Field'
+import Alert from '../../../ui/alert/Alert'
+
+import createBg from "../../../../images/bg-create.png"
+import styles from "./NewExercise.module.scss"
 
 const images = [
   'chest', 'shoulders', 'biceps', 'legs', 'hit'
@@ -42,11 +42,11 @@ const NewExercise = () => {
 
   return (
     <>
-      <Layout height='356px' bgImage={createBg} heading='Create new exercise'/>
-      <div className='wrapper'>
+      <Layout bgImage={createBg} heading='Create new exercise'/>
+      <div className='wrapper' style={{maxWidth: 340}}>
         {error && <Alert type='error' text={error}/>}
         {isSuccess && <Alert text='Exercise created successfully'/>}
-        {(isLoading) && <p>loading...</p>}
+        {isLoading && <p>loading...</p>}
         <form onSubmit={handleSubmit}>
           <Field 
             onChange={e => setName(e.target.value)}
