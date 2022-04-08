@@ -35,7 +35,7 @@ const Burger = () => {
             </li>
           ))}
           <li className={styles.link}>
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogout}>Выход</button>
           </li>
         </ul>
       </nav>

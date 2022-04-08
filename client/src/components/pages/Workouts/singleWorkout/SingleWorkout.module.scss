@@ -11,6 +11,10 @@
 .exercises {
   padding: 0 25px;
 
+  @media screen and (max-width: $mobile) {
+    padding: 0 20px !important;
+  }
+
   .item {
     width: 100%;
     background: $purple;

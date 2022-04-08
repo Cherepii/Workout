@@ -8,7 +8,7 @@ import bgImage from "../../../images/bg-profile.png"
 import basket from "../../../images/icons/basket.svg"
 
 import styles from "./singleWorkout/SingleWorkout.module.scss"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 
 
@@ -50,7 +50,7 @@ const ListWorkouts = () => {
   
   return (
     <>
-      <Layout bgImage={bgImage} heading='Your Workouts'/>
+      <Layout bgImage={bgImage} heading='Ваши тренировки'/>
       <div className='wrapper'>
           <div className={styles.exercises}>
             {error && <Alert type="error" text={error}/>}
@@ -58,7 +58,7 @@ const ListWorkouts = () => {
             {isSuccessRemove && <Alert text='Тренировка успешно удалена!'/>}
             {isSuccessLog && <Alert text='Запись успешно создана!'/>}
 
-            {(isLoading || isFetching) && <p>Loading...</p>}
+            {(isLoading || isFetching) && <p>Загрузка...</p>}
 
             {isSuccess && !isFetching && (
               data?.map((el, idx) => {

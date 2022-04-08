@@ -48,24 +48,30 @@ const NewWorkout = () => {
 
   return (
     <>
-      <Layout height='356px' bgImage={createBg} heading='Create new workout'/>
-      <div className='wrapper' style={{maxWidth: 340}}>
+      <Layout height='356px' bgImage={createBg} heading='Создание новой тренировки'/>
+      <div className='wrapper' style={{maxWidth: 360}}>
         {error && <Alert type='error' text={error}/>}
-        {isSuccessMutate && <Alert text='Workout created successfully!'/>}
+        {isSuccessMutate && <Alert text='Тренировка создана успешно!'/>}
         {isLoading && <p>Loading...</p>}
         <form>
           <Field 
             onChange={e => setName(e.target.value)}
             value={name}
-            placeholder='Enter name'
+            placeholder='Введите название'
           />
           
-          <Link to={'/new-exercise'} className={styles.exerciseLabel}>
-            Add new exercise
-          </Link>
+          <div className={styles.linkWrapper}>
+            <Link to={'/new-exercise'} className={styles.exerciseLabel}>
+              Создать новое упражнение
+            </Link>
+
+            <Link to={'/all-exercises'} className={styles.exerciseLabel}>
+              Удалить упражнения
+            </Link>
+          </div>
 
             <Select 
-              placeholder='Exercises'
+              placeholder='Упражнения'
               classNamePrefix='custom-select'
               onChange={setExercises}
               value={exercises}
@@ -78,7 +84,7 @@ const NewWorkout = () => {
               }
             />
           
-          <Button text='Create' onButtonClick={(e) => handleSubmit(e)}/>
+          <Button text='Создать' onButtonClick={(e) => handleSubmit(e)}/>
         </form>
       </div>
     </>

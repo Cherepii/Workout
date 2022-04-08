@@ -29,8 +29,8 @@ const Home = () => {
   return (
     <Layout userEmail={isSuccess && isAuth ? data.email : ''} bgImage={mainBg}>
       <div>
-        <Button onButtonClick={() => navigate('/new-workout')} type='main' text='New'/>
-        <h1 className={styles.title}>EXERCISES FOR THE SHOULDERS</h1>
+        <Button onButtonClick={() => isAuth ? navigate('/new-workout') : navigate('/auth')} type='main' text={isAuth ? 'Создать' : 'Войти'}/>
+        <h1 className={styles.title}>Приложение для тренировок</h1>
         {isSuccess && isAuth && (
           <Counters data={data}/>
         )}

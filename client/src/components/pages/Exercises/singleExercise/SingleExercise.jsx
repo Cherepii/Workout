@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom"
+import { useQuery } from "react-query"
 import $api from "../../../../api/api"
 
+import Layout from "../../../common/layout/Layout"
 import RenderHeading from "./RenderHeading"
+import Table from "./Table"
 
 import bgImage from "../../../../images/exercise-bg.jpg"
-import Layout from "../../../common/layout/Layout"
-import { useQuery } from "react-query"
-import Table from "./Table"
 
 const SingleExercise = () => {
   const {id} = useParams();
@@ -23,7 +23,7 @@ const SingleExercise = () => {
     <>
       <Layout 
         bgImage={bgImage} 
-        heading={isLoading ? 'loading...' :
+        heading={isLoading ? 'Загрузка...' :
           <RenderHeading 
             exName={data.exercise.name}
             exImage={`/uploads/exercises/${data.exercise.imageName}.svg`}

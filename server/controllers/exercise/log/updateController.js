@@ -16,12 +16,13 @@ export const updateExerciseLog = asyncHandler(async (req, res) => {
     throw new Error('Данный лог не найден...')
   }
 
+  let newTimes = currentLog.times
+  
   if((!timeIndex && timeIndex !==0) || !key || (!value && value !== false)){
     res.status(404)
     throw new Error('Заполните все поля !')
   }
 
-  let newTimes = currentLog.times
   newTimes[timeIndex][key] = value
 
   currentLog.times = newTimes

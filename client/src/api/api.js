@@ -35,7 +35,7 @@ const $api = async({type = 'GET', body, auth = true, url}) => {
     }
     return data.data
   } catch (error) {
-    if(error.response && error.response.data){
+    if(error.response && error.response.data.message){
       throw error.response.data.message
     }
 

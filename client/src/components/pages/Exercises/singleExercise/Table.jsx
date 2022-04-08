@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import debounce from "lodash.debounce"
 import cn from "classnames"
@@ -14,6 +14,8 @@ import completedImg from "../../../../images/icons/completed.svg"
 import checkboxImg from "../../../../images/icons/checkbox.svg"
 
 const Table = ({data, refetch, exId, isSuccess}) => {
+  const [weight, setWeight] = useState(0)
+
   const logId = data._id;
   const navigate = useNavigate()
 
@@ -48,6 +50,10 @@ const Table = ({data, refetch, exId, isSuccess}) => {
     } 
   }, [data?.times, isSuccess])
 
+  const handleChange = (e, value, index) => {
+    setWeight(e.target.value)
+  }
+
   return (
     
     <div className={styles.tableWrapper}>
@@ -55,13 +61,13 @@ const Table = ({data, refetch, exId, isSuccess}) => {
     {errorCompleted && <Alert type="error" text={errorCompleted}/>}
       <div className={styles.row}>
         <div>
-          <span>Previous</span>
+          <span>Предыдущие</span>
         </div>
         <div>
-          <span>Weight & repeat</span>
+          <span>Вес & Повторения</span>
         </div>
         <div>
-          <span>Completed</span>
+          <span>Завершить</span>
         </div>
       </div>
       {data.times.map((item, idx) => (
@@ -73,7 +79,7 @@ const Table = ({data, refetch, exId, isSuccess}) => {
         >
 
           <div className={`${styles.logItem} ${styles.opacity}`}>
-            <span>{item.prevWeight}kg</span>
+            <span>{item.prevWeight}кг</span>
             <i>/</i>
             <span>{item.prevRepeat}</span>
           </div>
@@ -91,19 +97,20 @@ const Table = ({data, refetch, exId, isSuccess}) => {
                 }), 800
               )}
             />
-            <span>kg</span>
+            <span>кг</span>
             <i>/</i>
             <input 
               type='number' 
               disabled={item.completed}
               defaultValue={item.weight}
-              onChange={debounce(e =>
+              onChange={e => debounce(e =>
                   e.target.value && updateLog({
-                  key: 'repeat',
-                  value: e.target.value,
-                  timeIndex: idx
-              })
- , 800             )}
+                    key: 'repeat',
+                    value: e.target.value,
+                    timeIndex: idx
+                }), 800
+              )}
+              onFocus={() => setWeight('')}
             />
           </div>
 

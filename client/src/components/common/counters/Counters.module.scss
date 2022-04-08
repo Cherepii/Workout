@@ -7,10 +7,13 @@
 }
 
 .count {
-  font-size: 23px;
+  font-size: 20px;
   line-height: 130.19%;
   text-transform: capitalize;
   text-align: center;
+  @media screen and (max-width: $mobile) {
+    font-size: 18px;
+  }
   > span {
     display: block;
   }

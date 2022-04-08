@@ -10,16 +10,12 @@ export const createExerciseLog = asyncHandler(async (req, res) => {
 
   let timesArr = []
 
-  const prevExercises = await ExerciseLog
-    .find({user: req.user._id, exercise: exerciseId})
-    .sort('desc')
-
-    for (let i = 0; i < times; i++) {
-      timesArr.push({
-        weight: 0,
-        repeat: 0
-      })
-    }
+  for (let i = 0; i < times; i++) {
+    timesArr.push({
+      weight: 0,
+      repeat: 0
+    })
+  }
   
   const exerciseLog = await ExerciseLog.create({
     user: req.user._id,

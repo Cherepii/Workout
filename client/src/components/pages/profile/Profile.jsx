@@ -24,7 +24,7 @@ const Profile = () => {
     <>
       <div 
         className={`${stylesLayout.wrapper} ${stylesLayout.otherPages}`} 
-        style={{backgroundImage: `url(${bgImage})`, height: 365}}>
+        style={{backgroundImage: `url(${bgImage})`, height: 345}}>
         <Header />
 
         <div className={styles.userInfo}>
@@ -42,11 +42,11 @@ const Profile = () => {
       <div className='wrapper'>
         <div className={styles.imagesBlock}>
           <div>
-            <div className={styles.title}>Before</div>
+            <div className={styles.title}>До</div>
             <img draggable={false} className={styles.image} src={afterImg} alt="before" />
           </div>
           <div>
-            <div className={styles.title}>After</div>
+            <div className={styles.title}>После</div>
             <img draggable={false} className={styles.image} src={afterImg} alt="after" />
           </div>
         </div>

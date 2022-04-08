@@ -42,21 +42,21 @@ const NewExercise = () => {
 
   return (
     <>
-      <Layout bgImage={createBg} heading='Create new exercise'/>
-      <div className='wrapper' style={{maxWidth: 340}}>
+      <Layout bgImage={createBg} heading='Создание нового упражнения'/>
+      <div className='wrapper' style={{maxWidth: 360}}>
         {error && <Alert type='error' text={error}/>}
-        {isSuccess && <Alert text='Exercise created successfully'/>}
+        {isSuccess && <Alert text='Упражнения создано успешно !'/>}
         {isLoading && <p>loading...</p>}
         <form onSubmit={handleSubmit}>
           <Field 
             onChange={e => setName(e.target.value)}
             value={name}
-            placeholder='Enter name'
+            placeholder='Введите название'
           />
           <Field 
             onChange={e => setTimes(e.target.value)}
             value={times}
-            placeholder='Enter times'
+            placeholder='Введите количество подходов'
           />
           <div className={styles.images}>
             {images.map(image => (
@@ -72,7 +72,7 @@ const NewExercise = () => {
             ))}
           </div>
 
-          <Button text='Create' />
+          <Button text='Создать' />
         </form>
       </div>
     </>

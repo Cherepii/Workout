@@ -19,16 +19,16 @@ export const getExerciseLog = asyncHandler(async (req, res) => {
 
   const prevExerciseLogs = await ExerciseLog.find({
     user: req.user._id,
-    exercise: exerciseLog.exercise._id
+    exercise: exerciseLog.exercise._id,
+    completed: true
   })
 
   const prevExeLog = prevExerciseLogs[0] 
 
   let newTimes = reBuildTimes(exerciseLog)
 
-  if(prevExeLog){
-    newTimes = reBuildTimes(exerciseLog, prevExeLog)
-  }
+  if(prevExeLog) newTimes = reBuildTimes(exerciseLog, prevExeLog)
+
 
   res.json({
     ...exerciseLog,

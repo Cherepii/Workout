@@ -53,26 +53,26 @@ const UpdateExercise = () => {
 
   return (
     <>
-      <Layout height='356px' bgImage={createBg} heading='Update exercise'/>
+      <Layout height='356px' bgImage={createBg} heading='Изменение упражнения'/>
       <div className='wrapper'>
         {error && <Alert type='error' text={error}/>}
-        {isSuccess && isSuccessGet && <Alert text='Exercise created successfully'/>}
+        {isSuccess && isSuccessGet && <Alert text='Упражнения обновленно успешно!'/>}
         {isLoading && <p>loading...</p>}
         <form onSubmit={handleSubmit}>
           <Field 
             onChange={e => setName(e.target.value)}
             value={name}
-            placeholder='Enter updated name'
+            placeholder='Введите новое имя'
           />
 
           <Field 
             onChange={e => setTimes(e.target.value)}
             value={times}
-            placeholder='Enter updated times'
+            placeholder='Введите новое количество подходов'
           />
 
           <Select 
-              placeholder='Exercises'
+              placeholder='Упражнения'
               classNamePrefix='custom-select'
               onChange={setExercise}
               value={exercise}
@@ -99,7 +99,7 @@ const UpdateExercise = () => {
             ))}
           </div>
 
-          <Button text='Update' />
+          <Button text='Изменить' />
         </form>
       </div>
     </>

@@ -10,6 +10,9 @@ $accent-04: rgba(181, 52, 113, 0.4);
   color: #fff;
   background: $accent-04;
   margin-top: 26px !important;
+  @media screen and (max-width: $mobile) {
+    padding: 12px 36px !important;
+  }
   &:hover {
     background: rgba($accent-04, 0.7)
   }

@@ -6,7 +6,6 @@ import $api from '../../../../api/api'
 
 import Header from "../../../common/header/Header"
 import stylesLayout from "../../../common/layout/Layout.module.scss"
-import Alert from "../../../ui/alert/Alert"
 
 import bgImage from "../../../../images/bg-profile.png"
 
@@ -24,7 +23,7 @@ const SingleWorkout = () => {
     refetchOnWindowFocus: false
   })
 
-  const {mutate: setCompleted, error} = useMutation('Set completed workout', 
+  const {mutate: setCompleted} = useMutation('Set completed workout', 
   () => $api({
     url: '/workouts/log/completed',
     type: 'PUT',
@@ -54,12 +53,12 @@ const SingleWorkout = () => {
 
         <div className={styles.titleBlock}>
           {isSuccess && <time className={styles.time}>{data.minutes} min</time>}
-          <h1 className={stylesLayout.title}>EXERCISES FOR THE SHOULDERS</h1>
+          <h1 className={stylesLayout.title}>Приложение для тренировок</h1>
         </div>
       </div>
       <div className='wrapper'>
         <div className={styles.exercises}>
-          {isLoading || isFetching ? <p>Loading...</p> : 
+          {isLoading || isFetching ? <p>Загрузка...</p> : 
           <>
             {isSuccess && 
               data.exerciseLogs.map((el, idx) => {

@@ -9,6 +9,11 @@ import Exercise from "../../models/exerciseModel.js"
 export const createNewExercise = asyncHandler(async (req, res) => {
   const {name, times, imageName} = req.body
 
+  if(!name || !times){
+    res.status(404)
+    res.json('Введите все обязательные поля!')
+  }
+
   const exercise = await Exercise.create({
     name,
     times, 
